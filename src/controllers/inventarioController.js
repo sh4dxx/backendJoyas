@@ -2,7 +2,7 @@ import HATEOAS from '../helpers/hateoas.js'
 import getErrorHandler from '../helpers/ErrorHandler.js'
 import { getInventoryModel, getQuantityInventoryModel, getInventoryFilterModel } from '../models/inventarioModel.js'
 
-export const getInventarioController = async (req, res) => {
+export const getInventariesController = async (req, res) => {
   try {
     const { order_by, limits, page } = req.query
     if (limits) {
