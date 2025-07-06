@@ -19,8 +19,8 @@ export const getInventarioController = async (req, res) => {
 
     const inventaries = await getInventoryModel(order_by, limits, page)
     const totalStock = await getQuantityInventoryModel()
-    const inventariesWithHateoas = await HATEOAS('joyas/joya', inventaries, limits, totalStock)
-    res.status(200).json(inventariesWithHateoas)
+    const inventarysWithHateoas = await HATEOAS('joyas/joya', inventaries, limits, totalStock)
+    res.status(200).json(inventarysWithHateoas)
   } catch (error) {
     res.status(500).json(getErrorHandler(error))
   }
