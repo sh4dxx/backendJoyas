@@ -1,6 +1,6 @@
 import HATEOAS from '../helpers/hateoas.js'
 import getErrorHandler from '../helpers/ErrorHandler.js'
-import { getInventoryModel, getQuantityInventoryModel, getInventoryFilterModel } from '../models/inventarioModel.js'
+import { getInventoryModel, getInventoryFilterModel } from '../models/inventarioModel.js'
 
 export const getInventariesController = async (req, res) => {
   try {
@@ -18,8 +18,7 @@ export const getInventariesController = async (req, res) => {
     }
 
     const inventaries = await getInventoryModel(order_by, limits, page)
-    const totalStock = await getQuantityInventoryModel()
-    const inventarysWithHateoas = await HATEOAS('joyas/joya', inventaries, limits, totalStock)
+    const inventarysWithHateoas = await HATEOAS('joyas/joya', inventaries, limits)
     res.status(200).json(inventarysWithHateoas)
   } catch (error) {
     res.status(500).json(getErrorHandler(error))
